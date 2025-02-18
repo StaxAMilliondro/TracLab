@@ -22,4 +22,22 @@ TrackLab/
 │   │   │   │   │   ├── colors.xml
 │   │   │   │   │   ├── strings.xml
 ├── README.md
-├── build.gradle# TracLab
+├── build.gradle
+package com.tracklab.presets;
+
+import com.tracklab.audio.AudioProcessor;
+
+public class LilDurkPreset {
+    private AudioProcessor audioProcessor;
+
+    public LilDurkPreset() {
+        this.audioProcessor = new AudioProcessor();
+    }
+
+    public float[] applyPreset(float[] audioData) {
+        // Apply emotional Auto-Tune, delay, and reverb
+        audioData = audioProcessor.applyAutoTune(audioData, 0.8f);
+        audioData = audioProcessor.applyReverb(audioData, 0.5f);
+        return audioData;
+    }
+}
